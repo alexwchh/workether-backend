@@ -1,0 +1,2 @@
+class AgendaActorsController < ApplicationController
+end

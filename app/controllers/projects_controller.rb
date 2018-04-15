@@ -1,7 +1,6 @@
-
 class ProjectsController < ApplicationController
   def index
-    puts 'getting all'
+    puts 'getting all projects'
     @user = User.find(session[:current_user_id])
     @projects = @user.projects
     @projects.each do |project|
@@ -20,10 +19,10 @@ class ProjectsController < ApplicationController
     @project = @user.projects.create(projects_params)
     if @user.save
       isSuccess = true
-      ahash = { 'isSuccess' => true, 'project' => @project }
-      puts ahash
-      render json: ahash
-    # Article对象也可以redirectto showpage
+      # ahash = { 'isSuccess' => true, 'project' => @project }
+      # puts ahash
+      render json: @project
+    # Articleredirectto showpage
     else
       render plain: @project
     end

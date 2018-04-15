@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'welcome/index'
   post '/login',to:'login#login'
+   put '/update_order',to:'task_lists#order'
+   put '/tasks_order', to:'tasks#order'
   resources :articles do
   resources :comments
   end

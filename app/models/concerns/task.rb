@@ -1,13 +1,16 @@
 class Task
   include Mongoid::Document
+  field :_id,type: BSON::ObjectId
+  field :task_list_id,type: BSON::ObjectId
   field :task_title,type:String
-  field :task_remindDate,type:String
-  field :task_isComplete ,type:String
-  field :task_creatTime  ,type:String
-  field :task_isRemind ,type:String
-  field :task_isRepeat ,type:String
+  field :task_remindDate,type:DateTime
+  field :task_isComplete ,type:Boolean
+  field :task_creatTime  ,type:DateTime
+  field :task_isRemind ,type:Boolean
+  field :task_isRepeat ,type:Boolean
   field :task_notes ,type:String
-  field :task_prl  ,type:String
+  field :task_prl  ,type:Integer
+  field :task_order ,type:Integer
 
 
 

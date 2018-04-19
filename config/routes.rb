@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   post '/login',to:'login#login'
    put '/update_order',to:'task_lists#order'
    put '/tasks_order', to:'tasks#order'
+   put '/subtasks_order', to:'subtasks#order'
+   put '/complete_all_subtask',to:'subtasks#complete_all'
   resources :articles do
   resources :comments
   end

@@ -10,8 +10,10 @@ class TaskListsController < ApplicationController
       #    puts project1._id 
       puts task_list._id.to_s
     end
-    render json: @tasklists
-    end
+    ahash = { 'project' => @project, 'task_lists' =>@tasklists }
+    puts ahash
+    render json: ahash
+  end
     def create
         puts 'session[user_id]:'
         puts session[:current_user_id]

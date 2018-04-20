@@ -1,37 +1,42 @@
-class TagsController < ApplicationController
+class TaskCommentsController < ApplicationController
     def index
         puts 'getting all tags'
         id = BSON::ObjectId.from_string(params[:task_id])
         
         @task= Task.find(id)
-        @tags = @task.tags
-        @tags.each do |tag|
+        @task_comments = @task.task_comments
+        @task_comments.each do |tag|
          # project1=@user.projects.find()
          #    puts project1._id 
          puts tag._id.to_s
        end
-       render json: @tags
+       render json: @task_comments
        end
        def create
            puts 'session[user_id]:'
            puts session[:current_user_id]
+           @user = User.find(session[:current_user_id])
+           puts @user.name
            id = BSON::ObjectId.from_string(params[:task_id])
            @task = Task.find(id)
-           @tag = @task.tags.create(tag_params)
+           @task_comment = @task.task_comments.create(task_comment_params)
+           
            if @task.save
              isSuccess = true
-              @added_tag = Tag.where(task_id: id).last
+              @added_comment = TaskComment.where(task_id: id).last
+              @added_comment.commenter = @user.name
+              @added_comment.save
              # @added_task_list =@project.task_lists.last
              # ahash = { 'isSuccess' => true, 'task_list' =>@task_list }
              # puts ahash
              puts "create successfully"
-             puts @added_tag._id
+           
     
              
-             render json:@added_tag
+             render json:@added_comment
            # Article对象也可以redirectto showpage
            else
-             render plain: @added_tag
+             render plain: @added_comment
            end
          end
         #  def update
@@ -50,8 +55,8 @@ class TagsController < ApplicationController
          def destroy 
           
            id = BSON::ObjectId.from_string(params[:id])
-           @tag = Tag.find(id)
-           if @tag.destroy
+           @task_comment = TaskComment.find(id)
+           if @task_comment.destroy
                isSuccess=true
            else
                isSuccess=false
@@ -60,7 +65,8 @@ class TagsController < ApplicationController
          end
          
          
-         def tag_params
-           params.require(:tag).permit(:_id,:task_id,:tag_title)
+         def task_comment_params
+           params.require(:task_comment).permit(:_id,:task_id,:commenter_id,:comment_content,:comment_time)
          end
 end
+

@@ -80,6 +80,6 @@ def index
     end
      
      def task_params
-       params.require(:task).permit(:_id,:task_list_id,:task_title, :task_order, :task_remindDate, :task_isComplete,:task_creatTime,:task_isRemind,:task_isRepeat,:task_notes,:task_prl)
+       params.require(:task).permit(:_id,:task_list_id,:task_title, :task_order, :task_remindDate, :task_isComplete,:task_creatTime,:task_remind,:task_repeat,:task_notes,:task_prl)
      end
 end

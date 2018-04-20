@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :task_actors 
     resources :subtasks
     resources :tags
+    resources :task_comments
   end
     resources :task_actors 
     resources :subtasks

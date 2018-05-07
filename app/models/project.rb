@@ -9,6 +9,8 @@ class Project
   has_many :project_actors, as: :project_actor_rlt,autosave: true,  dependent: :delete_all
   has_many :task_lists, as: :task_list_rlt,autosave: true,  dependent: :delete_all
   has_many :agendas,as: :agenda_rlt, autosave: true,  dependent: :delete_all
+  has_many :shares,as: :share_rlt, autosave: true,  dependent: :delete_all
+
   belongs_to :user
   
 end

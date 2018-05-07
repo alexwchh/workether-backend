@@ -1,0 +1,2 @@
+class ShareCommentsController < ApplicationController
+end

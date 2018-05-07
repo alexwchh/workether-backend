@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :project_actors
     resources :task_lists  
     resources :agendas
+    resources :shares
   end
   #project_actors
   resources :project_actors 
@@ -36,5 +37,10 @@ Rails.application.routes.draw do
     resources :agenda_actors
   end
   resources :agenda_actors
+  #shares
+  resources:shares, shallow:true do
+    resources :share_comments
+  end
+  resources :share_comments
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

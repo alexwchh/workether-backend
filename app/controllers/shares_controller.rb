@@ -44,7 +44,7 @@ class SharesController < ApplicationController
            id = BSON::ObjectId.from_string(params[:id])
            @share = Share.find(id)
        
-           if @share.update(shares_params)
+           if @share.update(shares_params) 
                isSuccess=true
            else
                isSuccess=false

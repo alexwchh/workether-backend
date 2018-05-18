@@ -1,6 +1,6 @@
 class SubtasksController < ApplicationController
     def index
-        puts 'getting all tasks'
+        puts 'getting all subtasks'
         id = BSON::ObjectId.from_string(params[:task_id])
         
         @task = Task.find(id)

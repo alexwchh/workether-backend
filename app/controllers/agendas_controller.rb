@@ -15,8 +15,7 @@ class AgendasController < ApplicationController
        render json: ahash
      end
        def create
-           puts 'session[user_id]:'
-           puts session[:current_user_id]
+           
            id = BSON::ObjectId.from_string(params[:project_id])
            @project = Project.find(id)
            @agenda = @project.agendas.create(agenda_params)

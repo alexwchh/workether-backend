@@ -1,6 +1,6 @@
 class ShareCommentsController < ApplicationController
     def index
-        puts 'getting all tags'
+        puts 'getting all share comments'
         id = BSON::ObjectId.from_string(params[:share_id])
         
         @share= Share.find(id)

@@ -22,6 +22,7 @@ class SharesController < ApplicationController
            @share = @project.shares.create(shares_params)
            if @project.save
              isSuccess = true
+             
               @added_share = Share.where(project_id: id).last
              # @added_task_list =@project.task_lists.last
              # ahash = { 'isSuccess' => true, 'task_list' =>@task_list }

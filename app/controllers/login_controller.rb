@@ -1,6 +1,6 @@
 class LoginController < ApplicationController
     def login
-        if @user = User.find(params[:_id])    
+        if @user = User.find_by(email: params[:email])    
             if @user.psw == params[:psw]
                 @@logged_user=@user
                 isSuccess=true
@@ -26,6 +26,6 @@ class LoginController < ApplicationController
     end
     private 
     def users_params
-        params.require(:user).permit(:_id,:psw)
+        params.require(:user).permit(:_id,:psw,:email,:name)
     end
 end

@@ -2,18 +2,20 @@ class ProjectsController < ApplicationController
   def index
     puts 'getting all projects'
     @user = User.find(session[:current_user_id])
-    @projects = @user.projects
+    @projects = Project.where(project_owner: @user._id).all
     @actors = ProjectActor.where(user_id: @user._id)
     # @actors = ProjectActor.find_by(email: @user.email)
 
     if @actors
       puts "asdf"
-     
+     puts @projects
+     puts @actors
       # if @actors.is_a? Array
         puts "333"
+        @project_array=@projects.to_a
       @actors.each do |actor|
         @project = Project.find(actor.project_id)
-        @projects.push @project
+        @project_array.push @project
         end
       # else
         # @project = Project.find(@actors.project_id)
@@ -26,7 +28,7 @@ class ProjectsController < ApplicationController
       #    puts project1._id
       puts project._id.to_s
     end
-    render json: @projects
+    render json: @project_array
   end
 
   def create
@@ -45,7 +47,11 @@ class ProjectsController < ApplicationController
       render plain: @project
     end
   end
-
+def show 
+  id = BSON::ObjectId.from_string(params[:id])
+  @project = Project.find(id)
+  render json:@project
+end
   def update
     # @project = Project.find((params[:_id].__mongoize_object_id__))
     @user = User.find(session[:current_user_id])
@@ -77,7 +83,7 @@ class ProjectsController < ApplicationController
   end
 
   def projects_params
-    params.require(:project).permit(:project_name, :project_create_time, :isStarred, :isActive)
+    params.require(:project).permit(:project_name, :project_create_time, :isStarred, :isActive,:project_owner)
   end
 
   def users_params

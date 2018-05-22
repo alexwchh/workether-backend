@@ -5,6 +5,7 @@ class Project
   field :project_create_time, type:DateTime
   field :isStarred, type: Boolean
   field :isActive,type: Boolean
+  field :project_owner,type: BSON::ObjectId
   #field :project_owner,type: String
   has_many :project_actors, as: :project_actor_rlt,autosave: true,  dependent: :delete_all
   has_many :task_lists, as: :task_list_rlt,autosave: true,  dependent: :delete_all

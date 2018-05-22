@@ -22,6 +22,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    id = BSON::ObjectId.from_string(params[:id])
+    @user = User.find(id);
+    render json: @user
+  end
+
   
 
   def users_params

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
    put '/tasks_order', to:'tasks#order'
    put '/subtasks_order', to:'subtasks#order'
    put '/complete_all_subtask',to:'subtasks#complete_all'
+   post '/projects/:project_id/project_actors_group', to:'project_actors#create_by_group'
   resources :articles do
   resources :comments
   end

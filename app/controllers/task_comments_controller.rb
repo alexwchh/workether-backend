@@ -25,6 +25,7 @@ class TaskCommentsController < ApplicationController
              isSuccess = true
               @added_comment = TaskComment.where(task_id: id).last
               @added_comment.commenter = @user.name
+              @added_comment.commenter_id = @user._id
               @added_comment.save
              # @added_task_list =@project.task_lists.last
              # ahash = { 'isSuccess' => true, 'task_list' =>@task_list }

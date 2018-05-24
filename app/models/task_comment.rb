@@ -3,7 +3,7 @@ class TaskComment
   include Mongoid::Document
   field :_id,type: BSON::ObjectId
   field :task_id,type: BSON::ObjectId
-
+  field :commenter_id,type: BSON::ObjectId
   field :commenter,type:String
   field :comment_content, type:String
   field :comment_time,type: DateTime 

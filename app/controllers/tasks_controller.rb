@@ -78,8 +78,22 @@ def index
           @task.update_attribute(:task_isComplete,task[:task_isComplete])
         end
     end
-     
+     def statics
+      id = BSON::ObjectId.from_string(params[:project_id])
+      @project = Project.find(id)
+      @tasklists=@project.task_lists
+      @tasks = Array.new()
+      @tasklists.each do |tasklist|
+        tasks=tasklist.tasks
+        tasks.each do |task|
+          @tasks.push task
+        end
+        
+      
+      end
+      render json:@tasks
+    end
      def task_params
-       params.require(:task).permit(:_id,:task_list_id,:task_title, :task_order, :task_remindDate, :task_isComplete,:task_creatTime,:task_remind,:task_repeat,:task_notes,:task_prl)
+       params.require(:task).permit(:_id,:task_list_id,:task_title, :task_order, :task_remindDate, :task_isComplete,:task_creatTime,:task_remind,:task_repeat,:task_notes,:task_prl,:task_completeDate)
      end
 end

@@ -31,6 +31,7 @@ class ProjectsController < ApplicationController
     render json: @project_array
   end
 
+
   def create
     puts 'session[user_id]:'
     puts session[:current_user_id]

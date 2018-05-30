@@ -11,6 +11,7 @@ class Task
   field :task_notes ,type:String
   field :task_prl  ,type:Integer
   field :task_order ,type:Integer
+  field :task_completeDate,type:DateTime
 
 
 

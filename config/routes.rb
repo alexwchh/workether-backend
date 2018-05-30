@@ -6,6 +6,7 @@ Rails.application.routes.draw do
    put '/subtasks_order', to:'subtasks#order'
    put '/complete_all_subtask',to:'subtasks#complete_all'
    post '/projects/:project_id/project_actors_group', to:'project_actors#create_by_group'
+   get '/projects/:project_id/statics',to:'tasks#statics'
   resources :articles do
   resources :comments
   end
